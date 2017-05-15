@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>bookshop1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.sh.bookshop.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SubjectServlet</servlet-name>
+    <servlet-class>com.sh.bookshop.SubjectServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BookServlet</servlet-name>
+    <servlet-class>com.sh.bookshop.BookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SubjectServlet</servlet-name>
+    <url-pattern>/subjects</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BookServlet</servlet-name>
+    <url-pattern>/books</url-pattern>
+  </servlet-mapping>
+  
+  <session-config>
+  	<session-timeout>60</session-timeout>
+  	<cookie-config>
+  		<name>MYSESSIONID</name>
+  	</cookie-config>
+  	<tracking-mode>COOKIE</tracking-mode>
+  </session-config>
+  
+  <listener>
+  	<listener-class>com.sh.bookshop.BookShopEvents</listener-class>
+  </listener>
+  
+  <filter>
+  	<filter-name>BookShopFilter</filter-name>
+  	<filter-class>com.sh.bookshop.BookShopFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>BookShopFilter</filter-name>
+  	<url-pattern>/subjects</url-pattern>
+  	<url-pattern>/books</url-pattern>
+  	<url-pattern>/showcart</url-pattern>
+  	<url-pattern>/addcart</url-pattern>
+  	<url-pattern>/logout</url-pattern>  
+  </filter-mapping>
+</web-app>
+
+
+
+
+
+
